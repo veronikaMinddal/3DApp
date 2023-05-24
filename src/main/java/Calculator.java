@@ -5,11 +5,10 @@ public class Calculator {
         return numberOfPosts;
     }
 
-    public int postQuantityCalculator(int length, int width) {
+    public double  postQuantityCalculator(double length, double width) {
         if(length > 450){return 6;}
         else if(width > 450){return 6;}
         else return 4;
-
     }
 
 
