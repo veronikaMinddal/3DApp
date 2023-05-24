@@ -2,6 +2,8 @@ import org.abstractica.javacsg.Geometry3D;
 import org.abstractica.javacsg.JavaCSG;
 import org.abstractica.javacsg.JavaCSGFactory;
 
+import java.util.Scanner;
+
 public class Test
 {
 	public static void main(String[] args)
@@ -15,28 +17,31 @@ public class Test
 		csg.view(cylle); */
 
 		Calculator calculator = new Calculator();
+		double length = 600;
+		double width = 350;
+		double height = 230;
 
-		double raftNum = calculator.raftQuantityCalculator(600);
-
-		Geometry3D raft = csg.box3D(250, 10, 10, false);
+		double raftWidth = 10;
 
 
+
+		double raftNum = calculator.raftQuantityCalculator(length);
+
+		Geometry3D raft = csg.box3D(length, raftWidth, raftWidth, false);
+
+
+		Geometry3D translateRaftPH = csg.translate3D(0, 0, height-raftWidth).transform(raft);
+		Geometry3D translateRaft = csg.translate3D(0, 0, height-raftWidth).transform(raft);
+		Geometry3D allRafts = csg.union3D(translateRaftPH, translateRaft);
 
 		double k = 0;
-
-		Geometry3D translateBoxPH = csg.translate3D(0, 0, 200).transform(raft);
-		Geometry3D translateBox = csg.translate3D(0, 0, 200).transform(raft);
-		Geometry3D allRafts = csg.union3D(translateBoxPH, translateBox);
-
-
-
-
+		double spaceRaft = 40;
 		for (double  i = 0; i < raftNum; i++){
 
-			translateBox = csg.translate3D(0, k, 600).transform(raft);
-			allRafts = csg.union3D(translateBoxPH, translateBox);
-			translateBoxPH = allRafts;
-			k = k + 40;
+			translateRaft = csg.translate3D(0, k, height-raftWidth).transform(raft);
+			allRafts = csg.union3D(translateRaftPH, translateRaft);
+			translateRaftPH = allRafts;
+			k = k + spaceRaft;
 		}
 		csg.view(allRafts);
 
