@@ -17,25 +17,24 @@ public class Test
 		csg.view(cylle); */
 
 		Calculator calculator = new Calculator();
-		double length = 600;
-		double width = 350;
+		double length = 400;
+		double width = 200;
 		double height = 230;
-
+		double spaceRaft = 40;
 		double raftWidth = 10;
 
 
 
 		double raftNum = calculator.raftQuantityCalculator(length);
 
-		Geometry3D raft = csg.box3D(length, raftWidth, raftWidth, false);
-
+		Geometry3D raft = csg.box3D(width, raftWidth, raftWidth, false);
 
 		Geometry3D translateRaftPH = csg.translate3D(0, 0, height-raftWidth).transform(raft);
 		Geometry3D translateRaft = csg.translate3D(0, 0, height-raftWidth).transform(raft);
 		Geometry3D allRafts = csg.union3D(translateRaftPH, translateRaft);
 
 		double k = 0;
-		double spaceRaft = 40;
+
 		for (double  i = 0; i < raftNum; i++){
 
 			translateRaft = csg.translate3D(0, k, height-raftWidth).transform(raft);
