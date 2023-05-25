@@ -14,7 +14,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="JavaCSG-intro-main" options="--add-modules java.base" />
+      <module name="JavaCSG-intro-main" options="" />
     </option>
   </component>
 </project>

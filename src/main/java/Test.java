@@ -13,7 +13,7 @@ public class Test
 		Calculator calculator = new Calculator();
 
 		//sets the length and width gotten from the user
-		double length = 400;
+		double length = 500;
 		double width = 200;
 
 		//sets the height
@@ -31,16 +31,16 @@ public class Test
 		Geometry3D raft = csg.box3D(width, raftWidth, raftWidth, false);
 
 		//sets up translate so there can be multiple rafts, transformed into one big figure
-		Geometry3D translateRaftPH = csg.translate3D(0, 0, height-raftWidth).transform(raft);
+		Geometry3D translateRaftPH = csg.translate3D(0, spaceRaft + raftWidth, height-raftWidth).transform(raft);
 		Geometry3D translateRaft = csg.translate3D(0, 0, height-raftWidth).transform(raft);
 		Geometry3D allRafts = csg.union3D(translateRaftPH, translateRaft);
 
 		//sets a double that adds up the amount each raft need to move
-		double k = 0;
+		double k = spaceRaft + raftWidth;
 
 		//makes the amount of rafts gotten from raftQuantityCalculator()
 		// and places them with the right amount of space between
-		for (double  i = 0; i < raftNum; i++){
+		for (double  i = 0; i <= raftNum; i++){
 
 			translateRaft = csg.translate3D(0, k, height-raftWidth).transform(raft);
 			allRafts = csg.union3D(translateRaftPH, translateRaft);
@@ -48,12 +48,27 @@ public class Test
 			k = k + spaceRaft;
 		}
 
+		double beamHeight = 20;
+		double beamWidth = 10;
+
+		//Geometry3D longBeam = csg.box3D(  length, beamWidth, beamHeight, false);
+		Geometry3D shortBeam = csg.box3D(  width - (beamWidth * 2),  beamWidth, beamHeight, false);
+
+		//Geometry3D translatebeam1 = csg.translate3D(0, 0, height - raftWidth - beamHeight).transform(shortBeam);
+		//Geometry3D translatebeam2 = csg.translate3D(0, width - beamWidth, height - raftWidth - beamHeight).transform(shortBeam);
+		Geometry3D translatebeam3 = csg.translate3D(0, 0, height - raftWidth - beamHeight).transform(shortBeam);
+		Geometry3D translatebeam4 = csg.translate3D(0, length - beamWidth, height - raftWidth - beamHeight).transform(shortBeam);
+
+		Geometry3D allBeams = csg.union3D(translatebeam3, translatebeam4);
+
+		Geometry3D fullCarport = csg.union3D(allBeams, allRafts);
+
 
 
 
 
 		//makes the final drawing
-		csg.view(allRafts);
+		csg.view(fullCarport);
 
 
 
