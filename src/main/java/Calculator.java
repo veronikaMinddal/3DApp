@@ -1,7 +1,7 @@
 public class Calculator {
 
     public double raftQuantityCalculator(double length) {
-        double numberOfPosts = (length/50)-1;
+        double numberOfPosts = (length/50) - 1;
         return numberOfPosts;
     }
 
