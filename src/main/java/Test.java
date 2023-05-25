@@ -25,6 +25,7 @@ public class Test
 		double spaceRaft = 50;
 		double raftWidth = 10;
 
+
 		//calculates the number of rafts needed
 		double raftNum = calculator.raftQuantityCalculator(length);
 
@@ -64,7 +65,32 @@ public class Test
 
 		Geometry3D allBeams = csg.union3D(translatebeam3, translatebeam4, translatebeam1, translatebeam2);
 
-		Geometry3D fullCarport = csg.union3D(allBeams, allRafts);
+		double postHeight = height - raftWidth - beamHeight;
+		double postWidth = 10;
+
+		Geometry3D post = csg.box3D(postWidth, postWidth, postHeight, false);
+
+		Geometry3D translatePost1 = csg.translate3D( width/2, length, 0).transform(post);
+		Geometry3D translatePost2 = csg.translate3D( -width/2, length, 0).transform(post);
+		Geometry3D translatePost3 = csg.translate3D( -width/2, 0, 0).transform(post);
+		Geometry3D translatePost4 = csg.translate3D( width/2, 0, 0).transform(post);
+
+		double postNumber =calculator.postQuantityCalculator(length, width);
+		Geometry3D allPosts;
+
+
+		if(postNumber >= 6){
+			Geometry3D translatePost5 = csg.translate3D( width/2, length/2, 0).transform(post);
+			Geometry3D translatePost6 = csg.translate3D( -width/2, length/2, 0).transform(post);
+			allPosts = csg.union3D(translatePost3, translatePost4, translatePost1, translatePost2, translatePost5, translatePost6);
+		}
+
+		else {
+			allPosts = csg.union3D(translatePost3, translatePost4, translatePost1, translatePost2);
+		}
+
+		Geometry3D fullCarport = csg.union3D(allBeams, allRafts, allPosts);
+
 
 
 
