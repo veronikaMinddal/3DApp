@@ -12,10 +12,32 @@ public class Test
 		JavaCSG csg = JavaCSGFactory.createDefault();
 
 		Calculator calculator = new Calculator();
+		MainMenu menu = new MainMenu();
+
+		double length = 0;
+		double width = 0;
+
+		System.out.println("Velkommen administrator!");
+
+		while (length == 0 || width == 0) {
+
+			System.out.println(menu.setDimensions());
+			length = menu.getLength();
+			width = menu.getWidth();
+
+		}
+
+		length = menu.getLength();
+		width = menu.getWidth();
+
+
+
+
+
+
+
 
 		//sets the length and width gotten from the user
-		double length = 500;
-		double width = 300;
 
 		//sets the height
 		double height = 230;
@@ -95,10 +117,6 @@ public class Test
 		Geometry3D translateRoof = csg.translate3D(0, length/2, height-roof).transform(theRoof);
 
 		Geometry3D fullCarport = csg.union3D(allBeams, allRafts, allPosts, translateRoof);
-
-
-
-
 
 
 		//makes the final drawing
