@@ -1,0 +1,32 @@
+Når man besøger Fog efter at have bestilt sin carport, får man lov at se en miniature model af den specifikke carport man har bestilt.
+Hertil har vi udviklet en prototype på et program, som kan generere en færdig 3D model i programmet OpenSCAD, ud fra længde og bredde på carporten.
+
+Programmet starter med at tage et Scanner input via terminalen og sætter to double, længde og bredde, ud fra det input.
+Når det er sat, har programmet alle de mål, den skal bruge for at generere en carport.
+
+I programmet er der hardcoded en masse doubles der bruges til at vurdere hvordan 3D formerne ser ud og hvor de placeres i et 3D plan.
+Stolper, spær og bjælker har nogle faste tykkelser, og carporten har en fast højde.
+Derfor ville det gøre mindre brugervenligt og effektivt hvis administratoren skulle sætte de værdier hver eneste gang, der printes en ny 3D model til en ordre.
+
+Spærenes størrelse sættes udfra bredde og spærs faste tykkelse.
+Mængden af spær regnes ved at tage længde og dividere det med spærs faste tykkelse og mellemrum imellem hver spær.
+Til sidst trækker man et spær fra mængden, da der ikke er et spær for starten eller for enden af carporten.
+Når man har mængden og størrelsen af spær beregnes placeringen af hvert spær. Det beregnes ved at man kører et for-loop der kører i antallet af spær.
+Det placere spær ned ad y-aksen ved at transformere placeringen, så y-placeringen bliver større for hvert nyt spær.
+Y-placeringen for det nye spær er det forrige spærs placering plus  spærs faste tykkelse og mellemrum imellem hver spær.
+Alle spær tilføjes til en ArrayList der løbes igennem og bliver grupperet sammen til et objekt.
+
+Bjælkernes indrammer carporten lige under spærene.
+To spærs længde beregnes ud fra længde plus den faste tykkelse og de to sidste beregnes udfra carportens bredde.
+Efter placeres de i hver sidde af firkanten, der udgør carporten med dimensionerne længde gange bredde.
+
+Stolpernes længde beregnes udfra carportens højde, minus spær og bjælkers faste tykkelse og placeres i hjørnet af den firkant der udgør carporten.
+
+
+Taget bliver beregnet som en kube udfra carportens længde gange bredde gange med den faste tykkelse på taget.
+Det bliver placeret øverst på carporten.
+
+Til sidst bliver hele figuren limet sammen til en union figur.
+Derefter stopper programmet og man kan downloade en .scad fil.
+
+

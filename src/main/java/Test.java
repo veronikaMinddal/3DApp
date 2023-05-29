@@ -8,12 +8,15 @@ import java.util.Scanner;
 public class Test
 {
 	public static void main(String[] args)
+
 	{
 		JavaCSG csg = JavaCSGFactory.createDefault();
 
 		Calculator calculator = new Calculator();
 		MainMenu menu = new MainMenu();
-
+		/**
+		 * test length
+		 */
 		double length = 0;
 		double width = 0;
 
@@ -108,6 +111,7 @@ public class Test
 			Geometry3D translatePost6 = csg.translate3D( -width/2, length/2, 0).transform(post);
 			allPosts = csg.union3D(translatePost3, translatePost4, translatePost1, translatePost2, translatePost5, translatePost6);
 		}
+
 
 		else {
 			allPosts = csg.union3D(translatePost3, translatePost4, translatePost1, translatePost2);
