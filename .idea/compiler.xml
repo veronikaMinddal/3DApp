@@ -6,15 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="3dCarportCalculatorPrototype" />
         <module name="JavaMavenProjectTemplate" />
         <module name="JavaCSGTemplate" />
-        <module name="JavaCSG-intro-main" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="JavaCSG-intro-main" options="" />
+      <module name="3dCarportCalculatorPrototype" options="" />
     </option>
   </component>
 </project>

@@ -1,0 +1,12 @@
+Velkommen administrator!
+
+Her er en kort guide til brug af prototype programmet til at lave 3D carport modeller.
+Du starter programmet på den grønne trekant ved siden af billen. Derefter popper en tekstboks op, i bunden af skærmen,
+som beder dig indtaste længde og derefter bredde. Du skal indtaste et heltal og trykke enter. Da Fog har nogle fastsatte
+carport mål bedes du kun bruge dem. Hvis du indtaster ugyldige mål får du en fejlmeddelse og vil blive bedt om
+at indtaste nye mål.
+Når målene er korrekt indtastet kan du downloade filen 'View0.scad' i mappen 'OpenSCAD'. Kopier filen over i en anden
+og omdøb den. Når du kører programmet igen vil filen 'View0.scad' nemlig blive overskrevet. Efterfølgende kan du åbne
+3D filen i programmet OpenSCAD.
+
+God fornøjelse!

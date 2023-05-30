@@ -21,9 +21,6 @@ public class MainMenu {
                             "Gå til mappen 'OpenSCAD' og download filen View0.scad. " +
                             "Navngiv den efter ordre ID og kør filen i OpenSCAD for at se 3D modellen";
 
-
-
-
                 } else {
                         return "Fejl! Målene er ugyldige";
                     }
@@ -40,7 +37,6 @@ public class MainMenu {
         public double getLength() {
             return length;
         }
-
 
     }
 

@@ -14,9 +14,7 @@ public class Test
 
 		Calculator calculator = new Calculator();
 		MainMenu menu = new MainMenu();
-		/**
-		 * test length
-		 */
+
 		double length = 0;
 		double width = 0;
 
@@ -33,44 +31,19 @@ public class Test
 		length = menu.getLength();
 		width = menu.getWidth();
 
-
-
-
-
-
-
-
-		//sets the length and width gotten from the user
-
-		//sets the height
 		double height = 230;
-
 		double roof = 5;
-
-		//sets dimensions for rafts (spaceRaft + raftWidth HAS TO BE EQUAL 50!!
-		// If not the math has to be changed in Calculator.raftQuantityCalculator())
 		double spaceRaft = 50;
 		double raftWidth = 10;
-
-
-		//calculates the number of rafts needed
 		double raftNum = calculator.raftQuantityCalculator(length);
 
-		//makes rafts with the right length based of width
 		Geometry3D raft = csg.box3D(width + raftWidth, raftWidth, raftWidth, false);
-
-
 		Geometry3D translateRaft;
 
-
-		//sets a double that adds up the amount each raft need to move
 		double k = spaceRaft;
 
 		ArrayList<Geometry3D> rafts = new ArrayList<>();
 
-
-		//makes the amount of rafts gotten from raftQuantityCalculator()
-		// and places them with the right amount of space between
 		for (double  i = 0; i < raftNum; i++){
 			translateRaft = csg.translate3D(0, k, height-raftWidth-roof).transform(raft);
 			rafts.add(translateRaft);
@@ -105,13 +78,11 @@ public class Test
 		double postNumber =calculator.postQuantityCalculator(length, width);
 		Geometry3D allPosts;
 
-
 		if(postNumber >= 6){
 			Geometry3D translatePost5 = csg.translate3D( width/2, length/2, 0).transform(post);
 			Geometry3D translatePost6 = csg.translate3D( -width/2, length/2, 0).transform(post);
 			allPosts = csg.union3D(translatePost3, translatePost4, translatePost1, translatePost2, translatePost5, translatePost6);
 		}
-
 
 		else {
 			allPosts = csg.union3D(translatePost3, translatePost4, translatePost1, translatePost2);
@@ -123,7 +94,6 @@ public class Test
 		Geometry3D fullCarport = csg.union3D(allBeams, allRafts, allPosts, translateRoof);
 
 
-		//makes the final drawing
 		csg.view(fullCarport);
 
 
